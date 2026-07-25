@@ -1,9 +1,21 @@
 package org.example;
 
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 @Configuration
-@ComponentScan(basePackages = "com.example")
 public class AppConfig {
+
+    @Bean
+    @Scope("singleton")
+    public SingletonService singletonService() {
+        return new SingletonService();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public PrototypeService prototypeService() {
+        return new PrototypeService();
+    }
 }
